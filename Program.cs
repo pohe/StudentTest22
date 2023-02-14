@@ -24,6 +24,8 @@ namespace StudentTest
 
             //Sorter students efter name
 
+            //students.Sort(new CompareByName());
+            students.Sort();
             foreach (Student student in students)
             {
                 Console.WriteLine(student);
@@ -31,11 +33,36 @@ namespace StudentTest
 
 
             //Find alle studenter med Mobile == "54545"
+
+            List<Student> AllStudents= new List<Student>();
+            foreach (Student student in students)
+            {
+                if (student.Mobile== "54545")
+                {
+                    AllStudents.Add(student);
+                }
+            }
+            foreach (Student student in AllStudents)
+            {
+                Console.WriteLine(student);
+            }
             //Anvend funktionen mobileSearch (nederst)
 
             //Lav et predicate til at søge efter  Mobile == "54545
 
+            
 
+            //Student foundStudent = students.Find(mobileSearch);
+            Student foundStudent = students.Find( s =>  s.Mobile == "54545" && s.Name =="Sebastian"   );
+            Console.WriteLine($"First student with mobile 54545 {foundStudent}");
+
+            List<Student> allStudents1 = students.FindAll(s => s.Mobile == "54545");
+            Console.WriteLine("All students with mobile 54545");
+            allStudents1.Sort(new CompareByName());
+            foreach (Student student in allStudents1 )
+            {
+                Console.WriteLine(student);
+            }
 
             Console.ReadLine();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentTest
 {
-    public class Student//: IComparable<Student>
+    public class Student: IComparable<Student>
     {
         public string Name { get; set; }
         public string Mobile { get; set; }
@@ -24,8 +24,17 @@ namespace StudentTest
             return $"Navn {Name} telefon {Mobile} alder {Age}";
         }
 
-        
-
-
+        public int CompareTo(Student other)
+        {
+            if (this.Age> other.Age)
+            {
+                return 1;
+            }
+            else if (this.Age < other.Age)
+            {
+                return -1;
+            }
+            return Name.CompareTo(other.Name);
+        }
     }
 }
